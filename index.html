@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Age Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      /* Styling for the title */
+      #title {
+        font-size: 32px;
+        text-align: center;
+        margin-top: 40px;
+      }
+      
+      /* Styling for the logo */
+      #logo {
+        width: 150px;
+        height: auto;
+        margin: 20px auto;
+        display: block;
+      }
+      
+      /* Styling for the input box and button */
+      #birthdate-input {
+        display: block;
+        margin: 40px auto;
+        padding: 16px;
+        font-size: 24px;
+        width: 80%;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+      }
+      
+      #calculate-button {
+        display: block;
+        margin: 40px auto;
+        padding: 16px;
+        font-size: 24px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      /* Styling for the result text */
+      #result-text {
+        margin-top: 80px;
+        font-size: 28px;
+        text-align: center;
+      }
+      
+     /* Styling for the attribution text */
+	#attribution-text {
+	  position: fixed;
+	  bottom: 0;
+	  left: 0;
+	  right: 0;
+	  margin: 20px;
+	  font-size: 20px;
+	  text-align: center;
+	}
+	
+      
+      #attribution-text a {
+        color: #4CAF50;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title">Age Calculator</h1>
+    
+    <img src="logo.png" alt="Logo" id="logo">
+    
+    <input type="date" id="birthdate-input" placeholder="Enter birthdate">
+    
+    <button id="calculate-button">Calculate Age</button>
+    
+    <div id="result-text"></div>
+    
+    <div id="attribution-text">Made by <a href="https://www.facebook.com/radowan.ahmed.1st" target="_blank">Radowan Ahmed</a> with <a href="https://openai.com" target="_blank">ChatGpt AI</a></div>
+    
+    <script>
+      const calculateAge = () => {
+        const birthdate = new Date(document.getElementById('birthdate-input').value);
+        const now = new Date();
+        const diff = now - birthdate;
+        
+        const year = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+        const month = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+        const day = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) % (1000 * 60 * 60 * 24 * 30) / (1000 * 60 * 60 * 24));
+        
+        const resultText = `You are ${year} years, ${month} months, and ${day} days old.`;
+        
+        document.getElementById('result-text').innerText = resultText;
+      }
+      
+      document.getElementById('calculate-button').addEventListener('click', calculateAge);
+    </script>
+ 
+  </body>
+</html>
+
+
+
